@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal Developer Portfolio & Project Showcase - Full Stack, Mobile & Web Developer" />
+  <title>Mkocia500 | Full Stack & Mobile Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header & Sticky Navigation -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#home" class="nav__logo">Mkocia<span>.dev</span></a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">About & Resume</a></li>
+          <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+          <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__actions">
+        <!-- Dark / Light Theme Toggle -->
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark and light theme" title="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="nav-toggle" class="icon-btn nav__toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+      <div class="container hero__container">
+        <div class="hero__content">
+          <span class="hero__badge">Available for Full Stack & Mobile Roles</span>
+          <h1 class="hero__title">Hi, I'm <span class="highlight">Mkocia</span>.<br />I build reliable web & mobile software.</h1>
+          <p class="hero__subtitle">
+            Full Stack Web Development Intern at <strong>Datheon</strong> and Computer Science student specializing in React, Node.js, Flutter, and native Android development.
+          </p>
+          <div class="hero__buttons">
+            <a href="#projects" class="btn btn--primary">Explore My Projects</a>
+            <a href="#about" class="btn btn--outline">View Resume Credentials</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Resume Credentials Section -->
+    <section class="about section" id="about">
+      <div class="container">
+        <h2 class="section__title">About Me & Credentials</h2>
+        <p class="section__subtitle">Background, education, and practical engineering experience</p>
+
+        <div class="about__grid">
+          <div class="about__bio card">
+            <h3>Who I Am</h3>
+            <p>
+              I am a hands-on software developer focused on turning real-world requirements into fast, scalable applications. Whether building modular React frontends, RESTful Node.js backends backed by MySQL, or cross-platform and native Android apps, I prioritize clean architecture and maintainable code.
+            </p>
+            <p>
+              Currently completing my <strong>Full Stack Web Development Internship at Datheon</strong>, building end-to-end web solutions from responsive UI components to deployment.
+            </p>
+            <a href="assets/resume.pdf" class="btn btn--primary btn--sm" download>Download Resume (PDF)</a>
+          </div>
+
+          <div class="about__credentials card">
+            <h3>Resume Highlights</h3>
+            <div class="timeline">
+              <div class="timeline__item">
+                <span class="timeline__date">2026 – Present</span>
+                <h4>Full Stack Web Development Intern — Datheon</h4>
+                <p>Developing responsive web applications, e-commerce platforms, and interactive UI systems using modern HTML5, CSS3, JavaScript, and React.</p>
+              </div>
+              <div class="timeline__item">
+                <span class="timeline__date">Academic Focus</span>
+                <h4>B.Sc. in Computer Science / ICT</h4>
+                <p>Core coursework in Data Networking & Communication, Theory of Computation, Database Systems, and Object-Oriented Software Engineering.</p>
+              </div>
+              <div class="timeline__item">
+                <span class="timeline__date">Core Certifications & Practice</span>
+                <h4>Mobile & Backend Systems Architecture</h4>
+                <p>Hands-on engineering with Android Room persistence, background sync workers, Node.js connection pooling, and Git version control.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Skills Grid -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <h2 class="section__title">Tech Stack & Skills</h2>
+        <p class="section__subtitle">Languages, frameworks, and tools I work with</p>
+
+        <div class="skills__grid">
+          <div class="skill-card card">
+            <h3>Frontend Web</h3>
+            <ul class="skill-tags">
+              <li>HTML5</li>
+              <li>CSS3 / Flexbox / Grid</li>
+              <li>JavaScript (ES6+)</li>
+              <li>React</li>
+              <li>Vite</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3>Backend & Databases</h3>
+            <ul class="skill-tags">
+              <li>Node.js</li>
+              <li>Express.js</li>
+              <li>MySQL</li>
+              <li>REST APIs</li>
+              <li>SQLite / Room DB</li>
+              <li>Connection Pooling</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3>Mobile Development</h3>
+            <ul class="skill-tags">
+              <li>Flutter</li>
+              <li>Dart</li>
+              <li>Native Android (Java)</li>
+              <li>Offline-First Sync</li>
+              <li>WorkManager</li>
+              <li>PDF Generation</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3>Tools & DevOps</h3>
+            <ul class="skill-tags">
+              <li>Git & GitHub</li>
+              <li>VS Code</li>
+              <li>Android Studio</li>
+              <li>Vercel & GitHub Pages</li>
+              <li>Linux / Windows CLI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <h2 class="section__title">Featured Projects</h2>
+        <p class="section__subtitle">Click any project card to inspect architecture, features, and links</p>
+
+        <div class="projects__grid">
+          <!-- Project 1 -->
+          <article class="project-card card" data-project="ecommerce">
+            <div class="project-card__header">
+              <span class="project-card__tag">Web App • React</span>
+              <span class="project-card__year">2026</span>
+            </div>
+            <h3 class="project-card__title">Modern E-Commerce Platform</h3>
+            <p class="project-card__desc">
+              A responsive storefront built with React and Vite featuring dynamic product filtering, interactive cart drawer, and modular UI components.
+            </p>
+            <div class="project-card__footer">
+              <span class="project-card__link">View Details →</span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card card" data-project="student-reg">
+            <div class="project-card__header">
+              <span class="project-card__tag">Android & Node.js</span>
+              <span class="project-card__year">2026</span>
+            </div>
+            <h3 class="project-card__title">Student Registration & Lab Portal</h3>
+            <p class="project-card__desc">
+              Role-based native Java Android app with offline Room caching, background SyncWorker, PDF report export, and a Node.js + MySQL backend.
+            </p>
+            <div class="project-card__footer">
+              <span class="project-card__link">View Details →</span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card card" data-project="unilife">
+            <div class="project-card__header">
+              <span class="project-card__tag">Cross-Platform • Flutter</span>
+              <span class="project-card__year">2026</span>
+            </div>
+            <h3 class="project-card__title">UniLife Campus Companion</h3>
+            <p class="project-card__desc">
+              A cross-platform Flutter mobile application streamlining student onboarding, registration workflows, and smooth state-managed navigation.
+            </p>
+            <div class="project-card__footer">
+              <span class="project-card__link">View Details →</span>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card card" data-project="portfolio">
+            <div class="project-card__header">
+              <span class="project-card__tag">HTML5 • CSS3 • JS</span>
+              <span class="project-card__year">2026</span>
+            </div>
+            <h3 class="project-card__title">Developer Portfolio Showcase</h3>
+            <p class="project-card__desc">
+              Lightweight, zero-dependency portfolio featuring mobile-first CSS Grid layouts, persistent dark/light theming, and interactive project modals.
+            </p>
+            <div class="project-card__footer">
+              <span class="project-card__link">View Details →</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <h2 class="section__title">Get In Touch</h2>
+        <p class="section__subtitle">Have an opportunity, project idea, or question? Reach out directly.</p>
+
+        <div class="contact__grid">
+          <div class="contact__info card">
+            <h3>Direct Links</h3>
+            <p>Connect with me on GitHub to explore my repositories or send an email for collaboration inquiries.</p>
+            <ul class="contact__links">
+              <li>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/Mkocia500" target="_blank" rel="noopener noreferrer">github.com/Mkocia500</a>
+              </li>
+              <li>
+                <strong>LinkedIn:</strong>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/mkocia500</a>
+              </li>
+              <li>
+                <strong>Email:</strong>
+                <a href="mailto:mkocia500@example.com">mkocia500@example.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact__form card" id="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell me about your project or role..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Send Message</button>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <p>&copy; <span id="year">2026</span> Mkocia500. Built with semantic HTML5, modern CSS & vanilla JavaScript.</p>
+      <a href="#home" class="footer__top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Interactive Project Modal Popup -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal__close" id="modal-close" aria-label="Close modal">&times;</button>
+      <span class="modal__tag" id="modal-tag">Category</span>
+      <h3 class="modal__title" id="modal-title">Project Title</h3>
+      <p class="modal__desc" id="modal-desc">Detailed project description goes here.</p>
+      <div class="modal__tech" id="modal-tech"></div>
+      <div class="modal__actions">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary" id="modal-repo">View on GitHub</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--outline" id="modal-demo">Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
