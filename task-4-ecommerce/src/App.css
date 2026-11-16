@@ -1,12 +1,7 @@
+/* MKOCIA E-COMMERCE STORE MAIN STYLESHEET */
 
-/* =========================================================
-   MKOCIA E-COMMERCE STORE
-   Main component stylesheet
-========================================================= */
 
-/* ------------------------------
-   1. GENERAL APPLICATION STYLES
------------------------------- */
+/* GENERAL APPLICATION STYLES AND FOCUS STATES */
 
 .app {
   min-height: 100vh;
@@ -17,6 +12,7 @@ button {
   font-family: inherit;
 }
 
+/* Keyboard accessibility focus ring for interactive controls */
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
@@ -30,9 +26,8 @@ button:disabled {
   opacity: 0.6;
 }
 
-/* ------------------------------
-   2. HEADER
------------------------------- */
+
+/* STICKY TOP HEADER AND NAVIGATION BAR */
 
 .Mkocia-header {
   height: 82px;
@@ -102,6 +97,7 @@ button:disabled {
   stroke-linejoin: round;
 }
 
+/* Mobile hamburger button hidden on desktop */
 .menu-toggle {
   display: none;
   gap: 5px;
@@ -151,6 +147,7 @@ button:disabled {
   width: 19px;
 }
 
+/* Gold badge showing active item count in the header */
 .cart-count {
   min-width: 22px;
   height: 22px;
@@ -164,9 +161,8 @@ button:disabled {
   font-weight: 700;
 }
 
-/* ------------------------------
-   3. HERO SECTION
------------------------------- */
+
+/* HERO BANNER AND ENTRANCE ANIMATIONS */
 
 .hero-section {
   min-height: 565px;
@@ -201,6 +197,7 @@ button:disabled {
   color: #17241e;
 }
 
+/* Staggered upward fade-in for the two hero heading lines */
 .animated-hero-heading {
   overflow: hidden;
 }
@@ -283,6 +280,7 @@ button:disabled {
   background: var(--gold);
 }
 
+/* Right-side hero image container with floating overlay card */
 .hero-visual {
   position: relative;
   max-width: 550px;
@@ -339,6 +337,7 @@ button:disabled {
   font-size: 10px;
 }
 
+/* Decorative gold corner accent behind the hero photo */
 .hero-decor {
   position: absolute;
   right: -18px;
@@ -349,9 +348,8 @@ button:disabled {
   border-right: 1px solid var(--gold);
 }
 
-/* ------------------------------
-   4. STORE BENEFITS
------------------------------- */
+
+/* STORE BENEFITS HIGHLIGHTS STRIP */
 
 .benefits-strip {
   max-width: 1180px;
@@ -394,9 +392,8 @@ button:disabled {
   margin-top: 5px;
 }
 
-/* ------------------------------
-   5. PRODUCT CATALOGUE
------------------------------- */
+
+/* PRODUCT CATALOGUE, FILTERS AND SEARCH BAR */
 
 .products-section {
   max-width: 1280px;
@@ -436,6 +433,7 @@ button:disabled {
   font-size: 13px;
 }
 
+/* Category filter pills and sort dropdown row */
 .catalog-toolbar {
   display: flex;
   align-items: center;
@@ -480,6 +478,7 @@ button:disabled {
   font-size: 11px;
 }
 
+/* Expandable product search input */
 .search-panel {
   margin-bottom: 20px;
 }
@@ -524,6 +523,9 @@ button:disabled {
 .results-info strong {
   color: #17241e;
 }
+
+
+/* PRODUCT GRID AND INDIVIDUAL PRODUCT CARDS */
 
 .products-grid {
   display: grid;
@@ -581,6 +583,7 @@ button:disabled {
   letter-spacing: 1px;
 }
 
+/* Slide-up quick view bar shown when hovering a product image */
 .quick-view {
   position: absolute;
   bottom: 0;
@@ -686,9 +689,8 @@ button:disabled {
   font-size: 15px;
 }
 
-/* ------------------------------
-   6. LOADING AND EMPTY STATES
------------------------------- */
+
+/* LOADING SPINNER, ERROR AND EMPTY SEARCH STATES */
 
 .status-message,
 .no-results {
@@ -739,9 +741,8 @@ button:disabled {
   }
 }
 
-/* ------------------------------
-   7. MODAL OVERLAYS
------------------------------- */
+
+/* SHARED MODAL AND DRAWER OVERLAYS */
 
 .modal-overlay,
 .drawer-overlay,
@@ -839,9 +840,8 @@ button:disabled {
   margin: -5px 0 25px;
 }
 
-/* ------------------------------
-   8. PRODUCT QUICK VIEW
------------------------------- */
+
+/* PRODUCT QUICK VIEW MODAL AND RECOMMENDATIONS */
 
 .product-modal {
   width: min(100%, 950px);
@@ -891,8 +891,7 @@ button:disabled {
   margin-top: 15px;
 }
 
-/* Recommended products */
-
+/* Suggested products grid inside the quick view modal */
 .suggested-section {
   border-top: 1px solid var(--border);
   margin-top: 35px;
@@ -988,9 +987,8 @@ button:disabled {
   font-size: 13px;
 }
 
-/* ------------------------------
-   9. SHOPPING CART DRAWER
------------------------------- */
+
+/* SHOPPING CART SLIDE-OUT DRAWER */
 
 .drawer-overlay {
   justify-content: flex-end;
@@ -1068,6 +1066,7 @@ button:disabled {
   gap: 20px;
 }
 
+/* Individual cart line item with thumbnail, quantity controls, and total */
 .cart-item {
   display: grid;
   grid-template-columns: 85px minmax(0, 1fr) auto;
@@ -1146,6 +1145,7 @@ button:disabled {
   text-decoration: underline;
 }
 
+/* Cart subtotal, tax, and shipping summary panel */
 .cart-summary {
   margin-top: 25px;
   padding: 20px;
@@ -1193,9 +1193,8 @@ button:disabled {
   margin-top: 13px;
 }
 
-/* ------------------------------
-   10. CHECKOUT FORM
------------------------------- */
+
+/* CHECKOUT MODAL AND CUSTOMER FORM */
 
 .checkout-modal {
   width: min(100%, 720px);
@@ -1335,9 +1334,8 @@ button:disabled {
   resize: vertical;
 }
 
-/* ------------------------------
-   11. PAYMENT METHODS
------------------------------- */
+
+/* PAYMENT METHOD OPTIONS AND ORDER CONFIRMATION */
 
 .payment-options {
   display: grid;
@@ -1385,6 +1383,7 @@ button:disabled {
   margin-top: 5px;
 }
 
+/* Brand badges for Visa, Mastercard, and PayPal */
 .payment-logos {
   display: flex;
   align-items: center;
@@ -1458,8 +1457,7 @@ button:disabled {
   margin-top: 13px;
 }
 
-/* Order success message */
-
+/* Order placed confirmation view */
 .order-success {
   min-height: 380px;
   display: flex;
@@ -1497,9 +1495,8 @@ button:disabled {
   margin-bottom: 25px;
 }
 
-/* ------------------------------
-   12. ORDER HISTORY
------------------------------- */
+
+/* ORDER HISTORY MODAL AND RECEIPT CARDS */
 
 .orders-modal {
   width: min(100%, 760px);
@@ -1582,9 +1579,8 @@ button:disabled {
   font-size: 12px;
 }
 
-/* ------------------------------
-   13. MOBILE NAVIGATION DRAWER
------------------------------- */
+
+/* MOBILE SLIDE-OUT NAVIGATION DRAWER */
 
 .menu-overlay {
   justify-content: flex-start;
@@ -1640,9 +1636,8 @@ button:disabled {
   font-weight: 700;
 }
 
-/* ------------------------------
-   14. MOBILE FLOATING CART
------------------------------- */
+
+/* MOBILE FLOATING CART BAR */
 
 .mobile-floating-cart {
   display: none;
@@ -1675,9 +1670,8 @@ button:disabled {
   font-weight: 700;
 }
 
-/* ------------------------------
-   15. FOOTER
------------------------------- */
+
+/* SITE FOOTER */
 
 .site-footer {
   background: var(--navy);
@@ -1743,9 +1737,8 @@ button:disabled {
   font-size: 10px;
 }
 
-/* ------------------------------
-   16. SCROLL REVEAL ANIMATION
------------------------------- */
+
+/* SCROLL REVEAL ENTRANCE ANIMATION */
 
 .reveal-on-scroll {
   opacity: 0;
@@ -1758,9 +1751,8 @@ button:disabled {
   transform: translateY(0);
 }
 
-/* =========================================================
-   17. RESPONSIVE DESIGN
-========================================================= */
+
+/* RESPONSIVE BREAKPOINTS */
 
 /* Tablets and smaller laptops */
 @media (max-width: 1050px) {
@@ -1802,7 +1794,7 @@ button:disabled {
     font-size: 27px;
   }
 
-  /* Show the hamburger menu only on smaller screens. */
+  /* Swap desktop navigation links for the mobile hamburger button */
   .menu-toggle {
     display: grid;
   }
@@ -1820,6 +1812,7 @@ button:disabled {
     display: none;
   }
 
+  /* Stack hero copy and image into a single column */
   .hero-section {
     min-height: auto;
     grid-template-columns: 1fr;
@@ -1935,6 +1928,7 @@ button:disabled {
     max-height: 92vh;
   }
 
+  /* Reveal sticky bottom cart bar on mobile viewports */
   .mobile-floating-cart {
     display: flex;
   }
@@ -2041,7 +2035,7 @@ button:disabled {
   }
 }
 
-/* Respect visitors who prefer reduced motion. */
+/* Disable smooth scrolling and animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2058,9 +2052,8 @@ button:disabled {
   }
 }
 
-/* =========================================
-   MKOCIA TOAST NOTIFICATIONS
-========================================= */
+
+/* FLOATING TOAST NOTIFICATION BANNER */
 
 .toast-notification {
   position: fixed;
@@ -2121,6 +2114,7 @@ button:disabled {
   }
 }
 
+/* Full-width mobile toast positioning */
 @media (max-width: 600px) {
   .toast-notification {
     top: 15px;

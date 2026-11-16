@@ -1,16 +1,17 @@
-
 import { useEffect, useMemo, useState } from "react";
 import Navbar from "./components/Navbar";
 import ProductGrid from "./components/ProductGrid";
 import CartDrawer from "./components/CartDrawer";
 import "./App.css";
 
-/* =========================================================
-   1. STORE CONFIGURATION AND HELPER FUNCTIONS
-========================================================= */
 
+// STORE CONFIGURATION AND HELPER FUNCTIONS
+
+
+// Base endpoint for the Fake Store API
 const API_URL = "https://fakestoreapi.com/products";
 
+// Product filter categories shown in the menu and filter bar
 const categories = [
   { label: "All Products", value: "all" },
   { label: "Electronics", value: "electronics" },
@@ -19,6 +20,7 @@ const categories = [
   { label: "Women's Clothing", value: "women's clothing" },
 ];
 
+// Format any numeric amount as a USD price string
 const money = (amount) => `$${Number(amount || 0).toFixed(2)}`;
 
 const paymentMethodLabels = {
@@ -26,6 +28,7 @@ const paymentMethodLabels = {
   paypal: "PayPal",
 };
 
+// Safely read and parse saved arrays from browser localStorage
 const loadSavedData = (key) => {
   try {
     const saved = localStorage.getItem(key);
@@ -41,6 +44,7 @@ const loadSavedData = (key) => {
   }
 };
 
+// Serialize and store data into browser localStorage
 const saveData = (key, data) => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
@@ -51,12 +55,13 @@ const saveData = (key, data) => {
   }
 };
 
-/* =========================================================
-   2. MAIN APPLICATION COMPONENT
-========================================================= */
+
+// MAIN APPLICATION COMPONENT
+
 
 function App() {
-  /* PRODUCT STATE */
+
+  // PRODUCT DATA AND FETCH STATE
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,21 +70,24 @@ function App() {
 
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  /* SEARCH, FILTER AND SORT STATE */
+
+  // SEARCH, FILTER AND SORT STATE
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [sortBy, setSortBy] = useState("default");
 
-  /* CART AND ORDER STATE */
+
+  // CART AND ORDER HISTORY STATE
 
   const [cart, setCart] = useState(() => loadSavedData("mkocia-cart"));
   const [orderHistory, setOrderHistory] = useState(() =>
     loadSavedData("mkocia-orders")
   );
 
-  /* INTERFACE STATE */
+
+  // DRAWERS, MODALS AND TOAST NOTIFICATION STATE
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,7 +97,8 @@ function App() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  /* CUSTOMER AND PAYMENT STATE */
+
+  // CUSTOMER CHECKOUT FORM AND PAYMENT STATE
 
   const [customerDetails, setCustomerDetails] = useState({
     name: "",
@@ -99,9 +108,8 @@ function App() {
 
   const [paymentMethod, setPaymentMethod] = useState("card");
 
-  /* =========================================================
-     3. FETCH PRODUCTS FROM FAKE STORE API
-  ========================================================= */
+
+  // FETCH PRODUCTS FROM API ON LOAD OR RETRY
 
   useEffect(() => {
     const controller = new AbortController();
@@ -115,6 +123,7 @@ function App() {
           signal: controller.signal,
         });
 
+        // Stop and throw an error if the server response is not OK
         if (!response.ok) {
           throw new Error(
             `Unable to retrieve products. Server returned ${response.status}.`
@@ -123,12 +132,14 @@ function App() {
 
         const data = await response.json();
 
+        // Make sure the returned payload is a valid product array
         if (!Array.isArray(data)) {
           throw new Error("The product data returned was invalid.");
         }
 
         setProducts(data);
       } catch (err) {
+        // Ignore abort errors triggered when the request is cancelled
         if (err.name !== "AbortError") {
           setError(
             err.message ||
@@ -144,12 +155,12 @@ function App() {
 
     fetchProducts();
 
+    // Cancel any active fetch request if the component unmounts or retries
     return () => controller.abort();
   }, [retryCount]);
 
-  /* =========================================================
-     4. SAVE CART AND ORDER HISTORY
-  ========================================================= */
+
+  // SYNC CART AND ORDER HISTORY TO LOCAL STORAGE
 
   useEffect(() => {
     const saved = saveData("mkocia-cart", cart);
@@ -167,9 +178,8 @@ function App() {
     }
   }, [orderHistory]);
 
-  /* =========================================================
-     5. TOAST NOTIFICATION
-  ========================================================= */
+
+  // AUTO-DISMISS TOAST NOTIFICATION AFTER 3 SECONDS
 
   useEffect(() => {
     if (!toastMessage) return;
@@ -181,11 +191,11 @@ function App() {
     return () => clearTimeout(timer);
   }, [toastMessage]);
 
-  /* =========================================================
-     6. SCROLL REVEAL ANIMATION
-  ========================================================= */
+
+  // SCROLL REVEAL ANIMATION OBSERVER
 
   useEffect(() => {
+    // Immediately show elements if IntersectionObserver is unsupported
     if (!("IntersectionObserver" in window)) {
       document
         .querySelectorAll(".reveal-on-scroll")
@@ -194,6 +204,7 @@ function App() {
       return;
     }
 
+    // Watch elements and trigger their entrance animation once visible
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -217,11 +228,11 @@ function App() {
     return () => observer.disconnect();
   }, [products]);
 
-  /* =========================================================
-     7. FILTER AND SORT PRODUCTS
-  ========================================================= */
+
+  // FILTER AND SORT PRODUCTS
 
   const filteredProducts = useMemo(() => {
+    // Filter products by selected category and search query
     let result = products.filter((product) => {
       const matchesCategory =
         selectedCategory === "all" ||
@@ -234,6 +245,7 @@ function App() {
       return matchesCategory && matchesSearch;
     });
 
+    // Sort a shallow copy of the filtered list based on the active sort option
     if (sortBy === "price-low") {
       result = [...result].sort((a, b) => a.price - b.price);
     } else if (sortBy === "price-high") {
@@ -248,9 +260,8 @@ function App() {
     return result;
   }, [products, selectedCategory, searchTerm, sortBy]);
 
-  /* =========================================================
-     8. CART CALCULATIONS
-  ========================================================= */
+
+  // CART TOTALS, TAX AND SHIPPING CALCULATIONS
 
   const cartCount = cart.reduce(
     (sum, item) => sum + (Number(item.quantity) || 0),
@@ -265,6 +276,7 @@ function App() {
     0
   );
 
+  // Apply 10% tax and grant free shipping on orders $50 or more
   const tax = subtotal * 0.1;
 
   const shipping =
@@ -272,13 +284,13 @@ function App() {
 
   const total = subtotal + tax + shipping;
 
-  /* =========================================================
-     9. SUGGESTED PRODUCTS
-  ========================================================= */
+
+  // RECOMMENDED PRODUCTS FOR QUICK VIEW MODAL
 
   const suggestedProducts = useMemo(() => {
     if (!selectedProduct) return [];
 
+    // Score other products by category match, price proximity, and rating
     return products
       .filter((product) => product.id !== selectedProduct.id)
       .map((product) => {
@@ -309,9 +321,8 @@ function App() {
       .slice(0, 4);
   }, [products, selectedProduct]);
 
-  /* =========================================================
-     10. NAVIGATION FUNCTIONS
-  ========================================================= */
+
+  // NAVIGATION AND DRAWER HANDLERS
 
   const scrollToProducts = () => {
     document.getElementById("products")?.scrollIntoView({
@@ -322,6 +333,7 @@ function App() {
     setIsMenuOpen(false);
   };
 
+  // Reset active filters and scroll smoothly back to the top
   const handleGoHome = () => {
     setSearchTerm("");
     setSelectedCategory("all");
@@ -339,10 +351,10 @@ function App() {
     setIsOrderHistoryOpen(true);
   };
 
-  /* =========================================================
-     11. CART FUNCTIONS
-  ========================================================= */
 
+  // SHOPPING CART HANDLERS
+
+  // Add a product to the cart or increment its existing quantity
   const handleAddToCart = (product) => {
     setCart((current) => {
       const existing = current.find(
@@ -372,6 +384,7 @@ function App() {
     setToastMessage("Product added to your cart.");
   };
 
+  // Adjust item quantity and remove any item whose quantity drops to zero
   const handleQuantityChange = (productId, change) => {
     setCart((current) =>
       current
@@ -395,13 +408,13 @@ function App() {
     setToastMessage("Item removed from your cart.");
   };
 
-  /* =========================================================
-     12. CHECKOUT FUNCTIONS
-  ========================================================= */
+
+  // CHECKOUT ORDER SUBMISSION HANDLER
 
   const handlePlaceOrder = (event) => {
     event.preventDefault();
 
+    // Prevent checkout if cart is empty or required customer fields are blank
     if (cart.length === 0) {
       setToastMessage("Your shopping cart is empty.");
       return;
@@ -416,6 +429,7 @@ function App() {
       return;
     }
 
+    // Create a permanent snapshot of the completed order
     const newOrder = {
       id: `ORD-${Date.now()}`,
       date: new Date().toLocaleString(),
@@ -437,6 +451,7 @@ function App() {
       paymentStatus: "Pending",
     };
 
+    // Save order to history, empty the cart, and reset checkout inputs
     setOrderHistory((previous) => [
       newOrder,
       ...previous,
@@ -457,14 +472,14 @@ function App() {
     setToastMessage("Your order has been recorded.");
   };
 
-  /* =========================================================
-     13. MAIN APPLICATION UI
-  ========================================================= */
+
+  // MAIN APPLICATION USER INTERFACE
 
   return (
     <div className="app">
 
-      {/* TOAST NOTIFICATION */}
+
+      {/* TOAST NOTIFICATION BANNER */}
 
       {toastMessage && (
         <div className="toast-notification" role="status">
@@ -473,7 +488,8 @@ function App() {
         </div>
       )}
 
-      {/* NAVBAR COMPONENT */}
+
+      {/* TOP NAVIGATION BAR */}
 
       <Navbar
         setIsMenuOpen={setIsMenuOpen}
@@ -486,9 +502,8 @@ function App() {
         cartCount={cartCount}
       />
 
-      {/* =====================================================
-          MOBILE MENU
-      ===================================================== */}
+
+      {/* MOBILE SLIDE-OUT NAVIGATION MENU */}
 
       {isMenuOpen && (
         <div
@@ -529,6 +544,7 @@ function App() {
               Shop all products
             </button>
 
+            {/* Category filter shortcuts */}
             <p className="menu-label">Categories</p>
 
             {categories.map((category) => (
@@ -561,9 +577,8 @@ function App() {
 
       <main>
 
-        {/* =================================================
-            HERO SECTION
-        ================================================= */}
+
+        {/* HERO BANNER SECTION */}
 
         <section className="hero-section">
 
@@ -627,9 +642,8 @@ function App() {
 
         </section>
 
-        {/* =================================================
-            BENEFITS STRIP
-        ================================================= */}
+
+        {/* STORE HIGHLIGHTS STRIP */}
 
         <section className="benefits-strip">
 
@@ -662,9 +676,8 @@ function App() {
 
         </section>
 
-        {/* =================================================
-            PRODUCT GRID COMPONENT
-        ================================================= */}
+
+        {/* MAIN PRODUCT CATALOG GRID */}
 
         <ProductGrid
           products={products}
@@ -686,9 +699,8 @@ function App() {
           onRetry={() => setRetryCount((count) => count + 1)}
         />
 
-        {/* =================================================
-            PRODUCT QUICK VIEW MODAL
-        ================================================= */}
+
+        {/* PRODUCT QUICK VIEW MODAL */}
 
         {selectedProduct && (
           <div
@@ -761,7 +773,8 @@ function App() {
 
               </div>
 
-              {/* SUGGESTED PRODUCTS */}
+
+              {/* RELATED PRODUCT RECOMMENDATIONS */}
 
               <div className="suggested-section">
 
@@ -832,9 +845,8 @@ function App() {
           </div>
         )}
 
-        {/* =================================================
-            SHOPPING CART DRAWER
-        ================================================= */}
+
+        {/* SHOPPING CART DRAWER */}
 
         <CartDrawer
           isCartOpen={isCartOpen}
@@ -851,9 +863,8 @@ function App() {
           setOrderPlaced={setOrderPlaced}
         />
 
-        {/* =================================================
-            CHECKOUT MODAL
-        ================================================= */}
+
+        {/* CHECKOUT MODAL */}
 
         {isCheckoutOpen && (
           <div
@@ -867,7 +878,8 @@ function App() {
 
               {orderPlaced ? (
 
-                /* ORDER SUCCESS */
+
+                /* ORDER CONFIRMATION SCREEN */
 
                 <div className="order-success">
 
@@ -899,7 +911,8 @@ function App() {
 
               ) : (
 
-                /* CHECKOUT FORM */
+
+                /* CHECKOUT DETAILS FORM */
 
                 <>
 
@@ -930,7 +943,8 @@ function App() {
 
                   <form onSubmit={handlePlaceOrder}>
 
-                    {/* ORDER SUMMARY */}
+
+                    {/* ORDER ITEMS AND COST BREAKDOWN */}
 
                     <div className="checkout-section">
 
@@ -1009,7 +1023,8 @@ function App() {
 
                     </div>
 
-                    {/* CUSTOMER INFORMATION */}
+
+                    {/* CUSTOMER DELIVERY DETAILS */}
 
                     <div className="checkout-section">
 
@@ -1088,7 +1103,8 @@ function App() {
 
                     </div>
 
-                    {/* PAYMENT METHOD */}
+
+                    {/* PAYMENT METHOD SELECTION */}
 
                     <div className="checkout-section">
 
@@ -1192,7 +1208,8 @@ function App() {
 
                     </div>
 
-                    {/* FINAL TOTAL */}
+
+                    {/* FINAL PAYABLE TOTAL AND SUBMIT BUTTON */}
 
                     <div className="checkout-total">
                       <span>Amount payable</span>
@@ -1217,9 +1234,8 @@ function App() {
           </div>
         )}
 
-        {/* =================================================
-            ORDER HISTORY MODAL
-        ================================================= */}
+
+        {/* ORDER HISTORY MODAL */}
 
         {isOrderHistoryOpen && (
           <div
@@ -1352,9 +1368,8 @@ function App() {
 
       </main>
 
-      {/* =====================================================
-          MOBILE FLOATING CART BUTTON
-      ===================================================== */}
+
+      {/* MOBILE FLOATING CART BAR */}
 
       {cartCount > 0 && (
         <button
@@ -1376,9 +1391,8 @@ function App() {
         </button>
       )}
 
-      {/* =====================================================
-          WEBSITE FOOTER
-      ===================================================== */}
+
+      {/* SITE FOOTER */}
 
       <footer className="site-footer">
 
