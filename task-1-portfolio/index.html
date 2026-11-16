@@ -8,11 +8,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header & Sticky Navigation -->
+
+
+  <!-- STICKY HEADER AND PRIMARY NAVIGATION -->
+
   <header class="header" id="header">
     <nav class="nav container">
       <a href="#home" class="nav__logo">Mkocia<span>.dev</span></a>
 
+      <!-- Desktop navigation links and mobile slide-in drawer -->
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
           <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
@@ -23,13 +27,12 @@
         </ul>
       </div>
 
+      <!-- Theme switcher and mobile hamburger controls -->
       <div class="nav__actions">
-        <!-- Dark / Light Theme Toggle -->
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark and light theme" title="Toggle Theme">
           <span id="theme-icon">🌙</span>
         </button>
 
-        <!-- Mobile Hamburger Button -->
         <button id="nav-toggle" class="icon-btn nav__toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -40,7 +43,10 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+
+
+    <!-- HERO INTRODUCTION SECTION -->
+
     <section class="hero section" id="home">
       <div class="container hero__container">
         <div class="hero__content">
@@ -57,13 +63,17 @@
       </div>
     </section>
 
-    <!-- About & Resume Credentials Section -->
+
+    <!-- ABOUT BIOGRAPHY AND RESUME TIMELINE -->
+
     <section class="about section" id="about">
       <div class="container">
         <h2 class="section__title">About Me & Credentials</h2>
         <p class="section__subtitle">Background, education, and practical engineering experience</p>
 
         <div class="about__grid">
+
+          <!-- Personal summary and downloadable CV link -->
           <div class="about__bio card">
             <h3>Who I Am</h3>
             <p>
@@ -72,9 +82,12 @@
             <p>
               Currently completing my <strong>Full Stack Web Development Internship at Datheon</strong>, building end-to-end web solutions from responsive UI components to deployment.
             </p>
-            <a href="assets/resume.pdf" class="btn btn--primary btn--sm" download>Download Resume (PDF)</a>
+            <a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+              Download CV
+            </a>
           </div>
 
+          <!-- Experience, education, and core technical milestones -->
           <div class="about__credentials card">
             <h3>Resume Highlights</h3>
             <div class="timeline">
@@ -95,17 +108,21 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Tech Stack Skills Grid -->
+
+    <!-- TECHNICAL SKILLS AND STACK CATEGORIES -->
+
     <section class="skills section" id="skills">
       <div class="container">
         <h2 class="section__title">Tech Stack & Skills</h2>
         <p class="section__subtitle">Languages, frameworks, and tools I work with</p>
 
         <div class="skills__grid">
+
           <div class="skill-card card">
             <h3>Frontend Web</h3>
             <ul class="skill-tags">
@@ -152,18 +169,22 @@
               <li>Linux / Windows CLI</li>
             </ul>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Featured Projects Section -->
+
+    <!-- FEATURED PROJECTS SHOWCASE -->
+
     <section class="projects section" id="projects">
       <div class="container">
         <h2 class="section__title">Featured Projects</h2>
         <p class="section__subtitle">Click any project card to inspect architecture, features, and links</p>
 
+        <!-- Each card's data-project attribute maps to its modal details in script.js -->
         <div class="projects__grid">
-          <!-- Project 1 -->
+
           <article class="project-card card" data-project="ecommerce">
             <div class="project-card__header">
               <span class="project-card__tag">Web App • React</span>
@@ -178,7 +199,6 @@
             </div>
           </article>
 
-          <!-- Project 2 -->
           <article class="project-card card" data-project="student-reg">
             <div class="project-card__header">
               <span class="project-card__tag">Android & Node.js</span>
@@ -193,7 +213,6 @@
             </div>
           </article>
 
-          <!-- Project 3 -->
           <article class="project-card card" data-project="unilife">
             <div class="project-card__header">
               <span class="project-card__tag">Cross-Platform • Flutter</span>
@@ -208,7 +227,6 @@
             </div>
           </article>
 
-          <!-- Project 4 -->
           <article class="project-card card" data-project="portfolio">
             <div class="project-card__header">
               <span class="project-card__tag">HTML5 • CSS3 • JS</span>
@@ -222,17 +240,22 @@
               <span class="project-card__link">View Details →</span>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+
+    <!-- CONTACT DETAILS AND MESSAGE FORM -->
+
     <section class="contact section" id="contact">
       <div class="container">
         <h2 class="section__title">Get In Touch</h2>
         <p class="section__subtitle">Have an opportunity, project idea, or question? Reach out directly.</p>
 
         <div class="contact__grid">
+
+          <!-- Direct social and email links -->
           <div class="contact__info card">
             <h3>Direct Links</h3>
             <p>Connect with me on GitHub to explore my repositories or send an email for collaboration inquiries.</p>
@@ -252,6 +275,7 @@
             </ul>
           </div>
 
+          <!-- Interactive inquiry submission form -->
           <form class="contact__form card" id="contact-form">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -268,12 +292,16 @@
             <button type="submit" class="btn btn--primary">Send Message</button>
             <p class="form-status" id="form-status" aria-live="polite"></p>
           </form>
+
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- Footer -->
+
+  <!-- SITE FOOTER -->
+
   <footer class="footer">
     <div class="container footer__content">
       <p>&copy; <span id="year">2026</span> Mkocia500. Built with semantic HTML5, modern CSS & vanilla JavaScript.</p>
@@ -281,7 +309,9 @@
     </div>
   </footer>
 
-  <!-- Interactive Project Modal Popup -->
+
+  <!-- DYNAMIC PROJECT DETAILS MODAL -->
+
   <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal">
       <button class="modal__close" id="modal-close" aria-label="Close modal">&times;</button>
