@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'A feature-rich e-commerce storefront developed with React and Vite. Includes responsive product grids, search filtering, an interactive shopping cart drawer, and clean modular component architecture designed for high maintainability.',
       tech: ['React', 'Vite', 'JavaScript (ES6+)', 'CSS3 Flexbox/Grid', 'Git'],
       repo: 'https://github.com/Mkocia500/Datheon_Full_Stack_Web_Development_Internship',
-      demo: '#'
+      demo: ''
     },
     'student-reg': {
       tag: 'Android & Node.js',
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'A comprehensive academic management suite featuring a native Java Android application with local Room database caching, background SyncWorker synchronization, PDF report generation, and a Node.js connection-pooling backend.',
       tech: ['Java (Android)', 'Room Database', 'WorkManager', 'Node.js', 'MySQL', 'REST API'],
       repo: 'https://github.com/Mkocia500',
-      demo: '#'
+      demo: ''
     },
     unilife: {
       tag: 'Cross-Platform • Flutter',
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'A cross-platform mobile application built using Flutter to streamline student onboarding and campus registration workflows. Features responsive state management and seamless multi-screen view transitions.',
       tech: ['Flutter', 'Dart', 'State Management', 'Mobile UI/UX'],
       repo: 'https://github.com/Mkocia500',
-      demo: '#'
+      demo: ''
     },
     portfolio: {
       tag: 'HTML5 • CSS3 • JS',
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'This exact portfolio website! Built from scratch with semantic HTML5, modern CSS Grid/Flexbox layouts, persistent dark/light theming, mobile hamburger navigation, and interactive project modal dialogs.',
       tech: ['HTML5', 'Modern CSS3', 'Vanilla JavaScript', 'Local Storage'],
       repo: 'https://github.com/Mkocia500',
-      demo: '#'
+      demo: ''
     }
   };
 
@@ -109,8 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
       modalTag.textContent = data.tag;
       modalTitle.textContent = data.title;
       modalDesc.textContent = data.desc;
-      modalRepo.href = data.repo;
-      modalDemo.href = data.demo;
+
+      if (modalRepo) {
+        modalRepo.href = data.repo || 'https://github.com/Mkocia500';
+      }
+
+      if (modalDemo) {
+        if (data.demo) {
+          modalDemo.href = data.demo;
+          modalDemo.style.display = 'inline-block';
+        } else {
+          modalDemo.style.display = 'none';
+        }
+      }
 
       // Render tech stack badges dynamically
       modalTech.innerHTML = '';
