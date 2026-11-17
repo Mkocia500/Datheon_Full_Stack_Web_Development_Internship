@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'A feature-rich e-commerce storefront developed with React and Vite. Includes responsive product grids, search filtering, an interactive shopping cart drawer, and clean modular component architecture designed for high maintainability.',
       tech: ['React', 'Vite', 'JavaScript (ES6+)', 'CSS3 Flexbox/Grid', 'Git'],
       repo: 'https://github.com/Mkocia500/Datheon_Full_Stack_Web_Development_Internship',
-      demo: ''
+      demo: 'https://mkociamart.vercel.app' 
     },
     'student-reg': {
       tag: 'Android & Node.js',
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: 'This exact portfolio website! Built from scratch with semantic HTML5, modern CSS Grid/Flexbox layouts, persistent dark/light theming, mobile hamburger navigation, and interactive project modal dialogs.',
       tech: ['HTML5', 'Modern CSS3', 'Vanilla JavaScript', 'Local Storage'],
       repo: 'https://github.com/Mkocia500',
-      demo: ''
+      demo: 'https://mkociamart.vercel.app/'
     }
   };
 
