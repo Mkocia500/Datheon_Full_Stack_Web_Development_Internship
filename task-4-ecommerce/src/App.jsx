@@ -1404,7 +1404,7 @@ function App() {
               className="brand footer-brand"
               onClick={handleGoHome}
             >
-              Mkocia<span>.</span>
+              Mkocia<span>Mart</span>
             </button>
 
             <p>
@@ -1437,7 +1437,7 @@ function App() {
         <div className="footer-bottom">
 
           <span>
-            © {new Date().getFullYear()} Mkocia. All rights reserved.
+            © {new Date().getFullYear()} MkociaMart All rights reserved.
           </span>
 
           <span>

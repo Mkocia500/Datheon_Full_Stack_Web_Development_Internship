@@ -25,7 +25,7 @@ export default function Navbar({
           </button>
 
           <button type="button" className="brand" onClick={handleGoHome}>
-            Mkocia<span>.</span>
+            Mkocia<span>Mart</span>
           </button>
         </div>
 
