@@ -1,18 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ==========================
-  // 1. Dark / Light Theme Toggle
-  // ==========================
+
+
+  // DARK AND LIGHT THEME TOGGLE
+
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   const htmlElement = document.documentElement;
 
-  // Check saved theme or system preference
+  // Restore previously selected theme from localStorage on initial load
   const savedTheme = localStorage.getItem('theme') || 'light';
   if (savedTheme === 'dark') {
     htmlElement.setAttribute('data-theme', 'dark');
     themeIcon.textContent = '☀️';
   }
 
+  // Toggle theme attribute, swap icon, and save preference
   themeToggle.addEventListener('click', () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
     if (currentTheme === 'dark') {
@@ -26,20 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ==========================
-  // 2. Mobile Hamburger Menu
-  // ==========================
+
+  // MOBILE HAMBURGER NAVIGATION MENU
+
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav__link');
 
+  // Toggle drawer visibility and update accessibility state
   navToggle.addEventListener('click', () => {
     const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !isExpanded);
     navMenu.classList.toggle('active');
   });
 
-  // Close menu when clicking any nav link
+  // Automatically close the mobile menu after selecting a section link
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
@@ -47,9 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==========================
-  // 3. Dynamic Project Modals
-  // ==========================
+
+  // PROJECT DETAILS DATA AND MODAL POPUP
+
+  // Project metadata mapped by card data-project attribute
   const projectData = {
     ecommerce: {
       tag: 'Web App • React',
@@ -95,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalDemo = document.getElementById('modal-demo');
   const projectCards = document.querySelectorAll('.project-card');
 
+  // Populate modal fields with the clicked project's details and lock background scroll
   projectCards.forEach(card => {
     card.addEventListener('click', () => {
       const projectId = card.getAttribute('data-project');
@@ -107,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modalRepo.href = data.repo;
       modalDemo.href = data.demo;
 
-      // Populate tech stack tags inside modal
+      // Render tech stack badges dynamically
       modalTech.innerHTML = '';
       data.tech.forEach(t => {
         const span = document.createElement('span');
@@ -121,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Hide modal and restore normal page scrolling
   const closeModal = () => {
     modalBackdrop.classList.remove('active');
     modalBackdrop.setAttribute('aria-hidden', 'true');
@@ -128,22 +134,26 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   modalClose.addEventListener('click', closeModal);
+
+  // Close modal when clicking the dark backdrop outside the dialog box
   modalBackdrop.addEventListener('click', (e) => {
     if (e.target === modalBackdrop) closeModal();
   });
 
+  // Close modal when pressing the Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
       closeModal();
     }
   });
 
-  // ==========================
-  // 4. Contact Form Handler
-  // ==========================
+
+  // CONTACT FORM SUBMISSION HANDLER
+
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
 
+  // Simulate async submission feedback and reset form inputs
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     formStatus.style.color = 'var(--primary)';
@@ -156,11 +166,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   });
 
-  // ==========================
-  // 5. Dynamic Footer Year
-  // ==========================
+
+  // DYNAMIC COPYRIGHT YEAR IN FOOTER
+
   const yearSpan = document.getElementById('year');
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
+
+
 });

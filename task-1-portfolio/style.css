@@ -1,6 +1,5 @@
-/* ==========================
-   CSS Variables & Theme Setup
-   ========================== */
+/* CSS VARIABLES AND LIGHT/DARK THEME TOKENS */
+
 :root {
   --bg-color: #f8fafc;
   --surface-color: #ffffff;
@@ -14,6 +13,7 @@
   --transition: all 0.3s ease;
 }
 
+/* Override surface and text tokens when dark mode is toggled */
 [data-theme="dark"] {
   --bg-color: #0b0f19;
   --surface-color: #1e293b;
@@ -26,9 +26,9 @@
   --modal-backdrop: rgba(0, 0, 0, 0.8);
 }
 
-/* ==========================
-   Reset & Base Styles
-   ========================== */
+
+/* RESET, BASE TYPOGRAPHY AND LAYOUT CONTAINER */
+
 * {
   margin: 0;
   padding: 0;
@@ -47,6 +47,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Centered page wrapper with responsive side padding */
 .container {
   width: 100%;
   max-width: 1100px;
@@ -54,9 +55,9 @@ body {
   padding: 0 1.5rem;
 }
 
-/* ==========================
-   Buttons & Components
-   ========================== */
+
+/* REUSABLE BUTTONS AND ELEVATED CARDS */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -96,6 +97,7 @@ body {
   font-size: 0.875rem;
 }
 
+/* Shared surface card with subtle hover lift */
 .card {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
@@ -110,9 +112,9 @@ body {
   border-color: var(--primary);
 }
 
-/* ==========================
-   Header & Navigation
-   ========================== */
+
+/* STICKY TOP HEADER AND NAVIGATION BAR */
+
 .header {
   position: sticky;
   top: 0;
@@ -185,6 +187,7 @@ body {
   color: var(--primary);
 }
 
+/* Hamburger menu toggle hidden on desktop screens */
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -199,9 +202,9 @@ body {
   transition: var(--transition);
 }
 
-/* ==========================
-   Hero Section
-   ========================== */
+
+/* SHARED SECTION HEADINGS AND HERO BANNER */
+
 .section {
   padding: 5rem 0;
 }
@@ -259,9 +262,9 @@ body {
   flex-wrap: wrap;
 }
 
-/* ==========================
-   About & Credentials Section
-   ========================== */
+
+/* ABOUT BIOGRAPHY AND CREDENTIALS TIMELINE */
+
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -279,6 +282,7 @@ body {
   margin-bottom: 1.25rem;
 }
 
+/* Vertical timeline border for education and experience */
 .timeline {
   display: flex;
   flex-direction: column;
@@ -310,9 +314,9 @@ body {
   color: var(--text-muted);
 }
 
-/* ==========================
-   Skills Grid Section
-   ========================== */
+
+/* TECHNICAL SKILLS GRID AND TAG PILLS */
+
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -342,9 +346,9 @@ body {
   color: var(--text-muted);
 }
 
-/* ==========================
-   Projects Grid Section
-   ========================== */
+
+/* FEATURED PROJECTS GRID AND CARDS */
+
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -396,9 +400,9 @@ body {
   font-size: 0.95rem;
 }
 
-/* ==========================
-   Contact Section
-   ========================== */
+
+/* CONTACT SECTION AND MESSAGE FORM */
+
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -472,9 +476,9 @@ body {
   font-weight: 600;
 }
 
-/* ==========================
-   Footer
-   ========================== */
+
+/* SITE FOOTER */
+
 .footer {
   border-top: 1px solid var(--border-color);
   padding: 2rem 0;
@@ -502,9 +506,9 @@ body {
   color: var(--primary);
 }
 
-/* ==========================
-   Project Modal Popup
-   ========================== */
+
+/* PROJECT DETAILS MODAL POPUP */
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -603,10 +607,11 @@ body {
   gap: 1rem;
 }
 
-/* ==========================
-   Responsive Media Queries
-   ========================== */
+
+/* RESPONSIVE MOBILE BREAKPOINT */
+
 @media (max-width: 768px) {
+  /* Full-screen slide-in navigation drawer on mobile screens */
   .nav__menu {
     position: fixed;
     top: 70px;
@@ -639,6 +644,7 @@ body {
     display: flex;
   }
 
+  /* Stack two-column sections into a single column */
   .about__grid,
   .contact__grid {
     grid-template-columns: 1fr;
@@ -647,5 +653,46 @@ body {
   .footer__content {
     flex-direction: column;
     text-align: center;
+  }
+}.hero__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.hero__content {
+  flex: 1;
+}
+
+.hero__image {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 4px solid var(--primary-color, #2563eb);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .hero__container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero__buttons {
+    justify-content: center;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
   }
 }
