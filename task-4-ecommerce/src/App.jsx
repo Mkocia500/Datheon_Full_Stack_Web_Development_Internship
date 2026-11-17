@@ -517,7 +517,7 @@ function App() {
           >
             <div className="drawer-heading">
               <span className="brand">
-                Mkocia<span>.</span>
+                Mkocia<span>Mart</span>
               </span>
 
               <button
