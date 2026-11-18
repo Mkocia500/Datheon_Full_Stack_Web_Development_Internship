@@ -1404,7 +1404,7 @@ function App() {
               className="brand footer-brand"
               onClick={handleGoHome}
             >
-              Mkocia<span>Mart</span>
+              Mkocia<span></span>
             </button>
 
             <p>
