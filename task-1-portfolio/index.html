@@ -1,115 +1,323 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal Developer Portfolio & Project Showcase - Full Stack, Mobile & Web Developer" />
-  <title>Mukosha Previous | Portfolio</title>
+
+  <meta
+    name="description"
+    content="Portfolio of Mukosha Previous, a third-year Computer Science student and aspiring software developer interested in web development, mobile applications and backend systems."
+  />
+
+  <meta name="author" content="Mukosha Previous" />
+  <meta name="theme-color" content="#172554" />
+
+  <title>Mukosha Previous | Software Developer Portfolio</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-
-  <!-- STICKY HEADER AND PRIMARY NAVIGATION -->
+  <!-- HEADER AND NAVIGATION -->
 
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="#home" class="nav__logo">MUKOSHA<span>PREVIOUS</span></a>
 
-      <!-- Desktop navigation links and mobile slide-in drawer -->
+      <button
+        id="nav-toggle"
+        class="icon-btn nav__toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <a href="#home" class="nav__logo">
+        MUKOSHA<span>PREVIOUS</span>
+      </a>
+
       <div class="nav__menu" id="nav-menu">
+
+        <div class="nav__drawer-heading">
+          <a href="#home" class="nav__drawer-brand">
+            MUKOSHA<span>PREVIOUS</span>
+          </a>
+
+          <button
+            type="button"
+            class="nav__close"
+            id="nav-close"
+            aria-label="Close navigation menu"
+          >
+            &times;
+          </button>
+        </div>
+
         <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About & Resume</a></li>
-          <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-          <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+          <li class="nav__item">
+            <a href="#home" class="nav__link">Home</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About Me</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#skills" class="nav__link">Skills</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#projects" class="nav__link">Projects</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
         </ul>
       </div>
 
-      <!-- Theme switcher and mobile hamburger controls -->
+      <div
+        class="nav__overlay"
+        id="nav-overlay"
+        aria-hidden="true"
+      ></div>
+
       <div class="nav__actions">
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark and light theme" title="Toggle Theme">
+        <button
+          id="theme-toggle"
+          class="icon-btn"
+          aria-label="Toggle dark and light theme"
+          title="Toggle Theme"
+        >
           <span id="theme-icon">🌙</span>
         </button>
-
-        <button id="nav-toggle" class="icon-btn nav__toggle" aria-label="Open navigation menu" aria-expanded="false">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
       </div>
+
     </nav>
   </header>
 
+
   <main>
 
-
-    <!-- HERO INTRODUCTION SECTION -->
+    <!-- HERO SECTION -->
 
     <section class="hero section" id="home">
       <div class="container hero__container">
+
         <div class="hero__content">
-          <span class="hero__badge">Available for Full Stack & Mobile Roles</span>
-          <h1 class="hero__title">Hi, I'm <span class="highlight">MUKOSHA PREVIOUS</span>.<br />I build reliable web & mobile software.</h1>
+
+          <span class="hero__badge">
+            Open to Internship & Junior Developer Opportunities
+          </span>
+
+          <h1 class="hero__title">
+            Hi, I'm
+            <span class="highlight">MUKOSHA PREVIOUS</span>.
+            <br />
+            I build digital solutions that solve real-world problems.
+          </h1>
+
           <p class="hero__subtitle">
-            Full Stack Web Development Intern at <strong>Datheon</strong> and 3rd Year Computer Science student specializing in React, Node.js, Flutter, and native Android development.
+            I'm a third-year Computer Science student and aspiring
+            software developer passionate about web development,
+            mobile applications and backend systems.
+
+            I enjoy transforming ideas into practical applications
+            using technologies such as JavaScript, React, Node.js
+            and Supabase.
           </p>
+
           <div class="hero__buttons">
-            <a href="#projects" class="btn btn--primary">Explore My Projects</a>
-            <a href="#about" class="btn btn--outline">View Resume Credentials</a>
+            <a href="#projects" class="btn btn--primary">
+              Explore My Projects
+            </a>
+
+            <a href="#contact" class="btn btn--outline">
+              Let's Connect
+            </a>
+          </div>
+
+          <div class="hero__socials">
+
+            <a
+              href="https://github.com/Mkocia500"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/previous-500-mukosha/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my LinkedIn profile"
+            >
+              LinkedIn
+            </a>
+
           </div>
         </div>
 
         <div class="hero__image">
-          <img src="assets/profile.png" alt="Mkocia profile portrait" class="profile-pic" />
+          <img
+            src="assets/profile.png"
+            alt="Mukosha Previous - Computer Science Student and Aspiring Software Developer"
+            class="profile-pic"
+          />
         </div>
+
       </div>
     </section>
 
 
-    <!-- ABOUT BIOGRAPHY AND RESUME TIMELINE -->
+    <!-- ABOUT ME -->
 
     <section class="about section" id="about">
       <div class="container">
-        <h2 class="section__title">About Me & Credentials</h2>
-        <p class="section__subtitle">Background, education, and practical engineering experience</p>
+
+        <h2 class="section__title">About Me</h2>
+
+        <p class="section__subtitle">
+          Get to know my background, education and development journey.
+        </p>
 
         <div class="about__grid">
 
-          <!-- Personal summary and downloadable CV link -->
           <div class="about__bio card">
+
             <h3>Who I Am</h3>
+
             <p>
-              I am a hands-on software developer focused on turning real-world requirements into fast, scalable applications. Whether building modular React frontends, RESTful Node.js backends backed by MySQL, or cross-platform and native Android apps, I prioritize clean architecture and maintainable code.
+              My name is Mukosha Previous, and I am a third-year
+              Computer Science student at Mulungushi University,
+              Zambia.
             </p>
+
             <p>
-              Currently completing my <strong>Full Stack Web Development Internship at Datheon</strong>, building end-to-end web solutions from responsive UI components to deployment.
+              I am passionate about technology and software
+              development, particularly building applications
+              that address practical challenges and improve
+              everyday experiences.
             </p>
-            <a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              Download CV
+
+            <p>
+              Through academic projects and independent development
+              work, I have gained practical experience with
+              frontend development, backend systems, databases
+              and Android application development.
+            </p>
+
+            <p>
+              I have worked with technologies including JavaScript,
+              React, Node.js, MySQL and Supabase. I am continuously
+              improving my technical abilities by building projects,
+              learning new concepts and exploring different
+              approaches to software development.
+            </p>
+
+            <p>
+              My goal is to grow into a skilled software developer,
+              contribute to meaningful technology projects and
+              gain professional experience through internships
+              and collaboration.
+            </p>
+
+            <a
+              href="assets/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--primary"
+            >
+              View / Download My CV
             </a>
+
           </div>
 
-          <!-- Experience, education, and core technical milestones -->
+
           <div class="about__credentials card">
-            <h3>Resume Highlights</h3>
+
+            <h3>Education & Development Journey</h3>
+
             <div class="timeline">
+
               <div class="timeline__item">
-                <span class="timeline__date">2026 – Present</span>
-                <h4>Full Stack Web Development Intern — Datheon</h4>
-                <p>Developing responsive web applications, e-commerce platforms, and interactive UI systems using modern HTML5, CSS3, JavaScript, and React.</p>
+
+                <span class="timeline__date">
+                  2024 – Present
+                </span>
+
+                <h4>BSc Computer Science</h4>
+
+                <p>
+                  Mulungushi University, Zambia.
+                  Currently in my third year, developing
+                  knowledge in programming, database systems,
+                  software engineering, computer networks
+                  and other areas of computing.
+                </p>
+
               </div>
+
+
               <div class="timeline__item">
-                <span class="timeline__date">Academic Focus</span>
-                <h4>B.Sc. in Computer Science / ICT</h4>
-                <p>Core coursework in Data Networking & Communication, Theory of Computation, Database Systems, and Object-Oriented Software Engineering.</p>
+
+                <span class="timeline__date">
+                  2026 – Present
+                </span>
+
+                <h4>Practical Software Development</h4>
+
+                <p>
+                  Working on practical development tasks and
+                  personal projects involving React, JavaScript,
+                  Node.js, databases and responsive web applications.
+                  This includes an e-commerce development task
+                  undertaken through Datheon.
+                </p>
+
               </div>
+
+
               <div class="timeline__item">
-                <span class="timeline__date">Core Certifications & Practice</span>
-                <h4>Mobile & Backend Systems Architecture</h4>
-                <p>Hands-on engineering with Android Room persistence, background sync workers, Node.js connection pooling, and Git version control.</p>
+
+                <span class="timeline__date">
+                  Jan 2022 – Aug 2024
+                </span>
+
+                <h4>StarBakery Limited</h4>
+
+                <p>
+                  Previous work experience, developing professional
+                  workplace experience and an understanding of
+                  working responsibilities.
+                </p>
+
               </div>
+
+
+              <div class="timeline__item">
+
+                <span class="timeline__date">
+                  Expected Graduation: 2028
+                </span>
+
+                <h4>Future Career Goal</h4>
+
+                <p>
+                  Aspiring to become a skilled software developer
+                  with the ability to design, develop and maintain
+                  useful software applications.
+                </p>
+
+              </div>
+
             </div>
           </div>
 
@@ -118,59 +326,94 @@
     </section>
 
 
-    <!-- TECHNICAL SKILLS AND STACK CATEGORIES -->
+    <!-- TECHNICAL SKILLS -->
 
     <section class="skills section" id="skills">
       <div class="container">
-        <h2 class="section__title">Tech Stack & Skills</h2>
-        <p class="section__subtitle">Languages, frameworks, and tools I work with</p>
+
+        <h2 class="section__title">Technical Skills</h2>
+
+        <p class="section__subtitle">
+          Technologies and tools I have worked with through
+          practical development and academic projects.
+        </p>
 
         <div class="skills__grid">
 
           <div class="skill-card card">
-            <h3>Frontend Web</h3>
+            <h3>Frontend Development</h3>
+
             <ul class="skill-tags">
               <li>HTML5</li>
-              <li>CSS3 / Flexbox / Grid</li>
-              <li>JavaScript (ES6+)</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
               <li>React</li>
               <li>Vite</li>
-              <li>Responsive Design</li>
+              <li>Responsive Web Design</li>
             </ul>
           </div>
 
+
           <div class="skill-card card">
-            <h3>Backend & Databases</h3>
+            <h3>Backend Development</h3>
+
             <ul class="skill-tags">
               <li>Node.js</li>
               <li>Express.js</li>
-              <li>MySQL</li>
               <li>REST APIs</li>
-              <li>SQLite / Room DB</li>
-              <li>Connection Pooling</li>
+              <li>JavaScript</li>
+              <li>Backend Integration</li>
             </ul>
           </div>
+
+
+          <div class="skill-card card">
+            <h3>Database Technologies</h3>
+
+            <ul class="skill-tags">
+              <li>MySQL</li>
+              <li>Supabase</li>
+              <li>SQL</li>
+              <li>SQLite</li>
+              <li>Database Design</li>
+            </ul>
+          </div>
+
 
           <div class="skill-card card">
             <h3>Mobile Development</h3>
+
             <ul class="skill-tags">
-              <li>Flutter</li>
-              <li>Dart</li>
-              <li>Native Android (Java)</li>
-              <li>Offline-First Sync</li>
-              <li>WorkManager</li>
-              <li>PDF Generation</li>
+              <li>Android Development</li>
+              <li>Java</li>
+              <li>Android Studio</li>
+              <li>Room Database</li>
             </ul>
           </div>
 
+
           <div class="skill-card card">
-            <h3>Tools & DevOps</h3>
+            <h3>Development Tools</h3>
+
             <ul class="skill-tags">
-              <li>Git & GitHub</li>
-              <li>VS Code</li>
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>Visual Studio Code</li>
               <li>Android Studio</li>
-              <li>Vercel & GitHub Pages</li>
-              <li>Linux / Windows CLI</li>
+              <li>npm</li>
+            </ul>
+          </div>
+
+
+          <div class="skill-card card">
+            <h3>Core Computer Science</h3>
+
+            <ul class="skill-tags">
+              <li>Data Structures</li>
+              <li>Object-Oriented Programming</li>
+              <li>Database Systems</li>
+              <li>Software Engineering</li>
+              <li>Computer Networking</li>
             </ul>
           </div>
 
@@ -179,56 +422,154 @@
     </section>
 
 
-    <!-- FEATURED PROJECTS SHOWCASE -->
+    <!-- PROJECTS -->
 
     <section class="projects section" id="projects">
       <div class="container">
-        <h2 class="section__title">Featured Projects</h2>
-        <p class="section__subtitle">Click any project card to inspect architecture, features, and links</p>
 
-        <!-- Each card's data-project attribute maps to its modal details in script.js -->
+        <h2 class="section__title">My Projects</h2>
+
+        <p class="section__subtitle">
+          A selection of academic, personal and practical
+          software development projects.
+        </p>
+
         <div class="projects__grid">
 
-          <article class="project-card card" data-project="ecommerce">
+          <article
+            class="project-card card"
+            data-project="ecommerce"
+          >
+
             <div class="project-card__header">
-              <span class="project-card__tag">Web App • React</span>
+
+              <span class="project-card__tag">
+                React • JavaScript • Vite
+              </span>
+
               <span class="project-card__year">2026</span>
+
             </div>
-            <h3 class="project-card__title">Modern E-Commerce Platform</h3>
+
+            <h3 class="project-card__title">
+              E-Commerce Storefront
+            </h3>
+
             <p class="project-card__desc">
-              A responsive storefront built with React and Vite featuring dynamic product filtering, interactive cart drawer, and modular UI components.
+              A modern e-commerce storefront developed using
+              React and JavaScript. Features include product
+              browsing, category filtering, search functionality,
+              shopping cart management, quantity updates and
+              checkout functionality.
             </p>
+
             <div class="project-card__footer">
-              <span class="project-card__link">View Details →</span>
+              <span class="project-card__link">
+                View Details →
+              </span>
             </div>
+
           </article>
 
-          <article class="project-card card" data-project="student-reg">
+
+          <article
+            class="project-card card"
+            data-project="student-reg"
+          >
+
             <div class="project-card__header">
-              <span class="project-card__tag">Android & Node.js</span>
+
+              <span class="project-card__tag">
+                Android Java • Node.js • MySQL
+              </span>
+
               <span class="project-card__year">2026</span>
+
             </div>
-            <h3 class="project-card__title">Student Registration & Lab Portal</h3>
+
+            <h3 class="project-card__title">
+              Student Registration & Lab Groups Portal
+            </h3>
+
             <p class="project-card__desc">
-              Role-based native Java Android app with offline Room caching, background SyncWorker, PDF report export, and a Node.js + MySQL backend.
+              An academic project designed to support student
+              registration and laboratory group management.
+              The system combines an Android application with
+              a Node.js backend and MySQL database.
             </p>
+
             <div class="project-card__footer">
-              <span class="project-card__link">View Details →</span>
+              <span class="project-card__link">
+                View Details →
+              </span>
             </div>
+
           </article>
-          
-          <article class="project-card card" data-project="portfolio">
+
+
+          <article class="project-card card">
+
             <div class="project-card__header">
-              <span class="project-card__tag">HTML5 • CSS3 • JS</span>
+
+              <span class="project-card__tag">
+                JavaScript • Node.js • Supabase
+              </span>
+
               <span class="project-card__year">2026</span>
+
             </div>
-            <h3 class="project-card__title">Developer Portfolio Showcase</h3>
+
+            <h3 class="project-card__title">
+              F5Cosmetics E-Commerce Platform
+            </h3>
+
             <p class="project-card__desc">
-              Lightweight, zero-dependency portfolio featuring mobile-first CSS Grid layouts, persistent dark/light theming, and interactive project modals.
+              An e-commerce development project focused on
+              creating an online shopping experience for
+              cosmetics products, using JavaScript, Node.js
+              and Supabase.
             </p>
+
             <div class="project-card__footer">
-              <span class="project-card__link">View Details →</span>
+              <span class="project-card__link">
+                F5Cosmetics Project
+              </span>
             </div>
+
+          </article>
+
+
+          <article
+            class="project-card card"
+            data-project="portfolio"
+          >
+
+            <div class="project-card__header">
+
+              <span class="project-card__tag">
+                HTML • CSS • JavaScript
+              </span>
+
+              <span class="project-card__year">2026</span>
+
+            </div>
+
+            <h3 class="project-card__title">
+              Personal Developer Portfolio
+            </h3>
+
+            <p class="project-card__desc">
+              A personal portfolio website designed to showcase
+              my background, technical skills, development
+              projects and professional contact information.
+            </p>
+
+            <div class="project-card__footer">
+              <span class="project-card__link">
+                View Details →
+              </span>
+            </div>
+
           </article>
 
         </div>
@@ -236,55 +577,146 @@
     </section>
 
 
-    <!-- CONTACT DETAILS AND MESSAGE FORM -->
+    <!-- CONTACT SECTION -->
 
     <section class="contact section" id="contact">
       <div class="container">
+
         <h2 class="section__title">Get In Touch</h2>
-        <p class="section__subtitle">Have a business proposal, an opportunity, project idea, or question? Reach out directly.</p>
+
+        <p class="section__subtitle">
+          Interested in working together, discussing a project,
+          offering an opportunity or simply connecting?
+          I'd be happy to hear from you.
+        </p>
 
         <div class="contact__grid">
 
-          <!-- Direct social and email links -->
           <div class="contact__info card">
-            <h3>Direct Links</h3>
-            <p>Connect with me on GitHub to explore my repositories or send an email or WhatsApp message for any inquiries.</p>
+
+            <h3>Let's Connect</h3>
+
+            <p>
+              I'm open to internship opportunities,
+              professional networking, collaboration and
+              meaningful software development projects.
+            </p>
+
             <ul class="contact__links">
+
               <li>
                 <strong>GitHub:</strong>
-                <a href="https://github.com/Mkocia500" target="_blank" rel="noopener noreferrer">github.com/Mkocia500</a>
+
+                <a
+                  href="https://github.com/Mkocia500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/Mkocia500
+                </a>
               </li>
+
               <li>
                 <strong>LinkedIn:</strong>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/previousmukosha500</a>
+
+                <a
+                  href="https://www.linkedin.com/in/previous-500-mukosha/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View My LinkedIn Profile
+                </a>
               </li>
-              <li>
-                <strong>Email:</strong>
-                <a href="mailto:previousmukosha500@example.com">previousmukosha500@example.com</a>
-              </li>
-              <li>
-                <strong>WhatsApp:</strong>
-                <a href="https://wa.me/260964711113?text=Hi%20Mkocia%2C%20I%20saw%20your%20developer%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-              </li>
+
             </ul>
           </div>
 
-          <!-- Interactive inquiry submission form -->
-          <form class="contact__form card" id="contact-form">
+
+          <!-- EMAILJS CONTACT FORM -->
+
+          <form
+            class="contact__form card"
+            id="contact-form"
+          >
+
             <div class="form-group">
+
               <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                autocomplete="name"
+                required
+              />
+
             </div>
+
+
             <div class="form-group">
+
               <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                autocomplete="email"
+                required
+              />
+
             </div>
+
+
+            <!-- SUBJECT FIELD: MATCHES {{title}} IN EMAILJS -->
+
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="Tell me about your project or role..." required></textarea>
+
+              <label for="title">Subject</label>
+
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Enter message subject"
+                required
+              />
+
             </div>
-            <button type="submit" class="btn btn--primary">Send Message</button>
-            <p class="form-status" id="form-status" aria-live="polite"></p>
+
+
+            <div class="form-group">
+
+              <label for="message">Your Message</label>
+
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="btn btn--primary"
+            >
+              Send Message
+            </button>
+
+            <p
+              class="form-status"
+              id="form-status"
+              aria-live="polite"
+              role="status"
+            ></p>
+
           </form>
 
         </div>
@@ -294,32 +726,103 @@
   </main>
 
 
-  <!-- SITE FOOTER -->
+  <!-- FOOTER -->
 
   <footer class="footer">
+
     <div class="container footer__content">
-      <p>&copy; <span id="year">2026</span> Mukosha Previous.</p>
-      <a href="#home" class="footer__top">Back to top ↑</a>
+
+      <p>
+        &copy;
+        <span id="year">2026</span>
+        Mukosha Previous. All Rights Reserved.
+      </p>
+
+      <a href="#home" class="footer__top">
+        Back to Top ↑
+      </a>
+
     </div>
+
   </footer>
 
 
-  <!-- DYNAMIC PROJECT DETAILS MODAL -->
+  <!-- PROJECT DETAILS MODAL -->
 
-  <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div
+    class="modal-backdrop"
+    id="project-modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+
     <div class="modal">
-      <button class="modal__close" id="modal-close" aria-label="Close modal">&times;</button>
-      <span class="modal__tag" id="modal-tag">Category</span>
-      <h3 class="modal__title" id="modal-title">Project Title</h3>
-      <p class="modal__desc" id="modal-desc">Detailed project description goes here.</p>
-      <div class="modal__tech" id="modal-tech"></div>
+
+      <button
+        class="modal__close"
+        id="modal-close"
+        aria-label="Close modal"
+      >
+        &times;
+      </button>
+
+      <span class="modal__tag" id="modal-tag">
+        Category
+      </span>
+
+      <h3 class="modal__title" id="modal-title">
+        Project Title
+      </h3>
+
+      <p class="modal__desc" id="modal-desc">
+        Project description will appear here.
+      </p>
+
+      <div
+        class="modal__tech"
+        id="modal-tech"
+      ></div>
+
       <div class="modal__actions">
-        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary" id="modal-repo">View on GitHub</a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--outline" id="modal-demo" style="display: none;">Live Demo</a>
+
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--primary"
+          id="modal-repo"
+        >
+          View on GitHub
+        </a>
+
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--outline"
+          id="modal-demo"
+          style="display: none;"
+        >
+          Live Demo
+        </a>
+
       </div>
+
     </div>
+
   </div>
 
-  <script src="script.js"></script>
+
+  <!-- EMAILJS BROWSER SDK -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+
+  <!-- YOUR PORTFOLIO JAVASCRIPT -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>

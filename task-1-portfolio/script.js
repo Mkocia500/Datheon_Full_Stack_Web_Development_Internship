@@ -1,4 +1,10 @@
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // EMAILJS CONFIGURATION
+  const EMAILJS_PUBLIC_KEY = 'TjZsKS11fbstV0w5K';
+  const EMAILJS_SERVICE_ID = 'service_4xz1nbn';
+  const EMAILJS_TEMPLATE_ID = 'template_uy04f3r';
 
 
   // DARK AND LIGHT THEME TOGGLE
@@ -7,87 +13,176 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeIcon = document.getElementById('theme-icon');
   const htmlElement = document.documentElement;
 
-  // Restore previously selected theme from localStorage on initial load
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  if (savedTheme === 'dark') {
-    htmlElement.setAttribute('data-theme', 'dark');
-    themeIcon.textContent = '☀️';
+  const applyTheme = (theme) => {
+    if (theme === 'dark') {
+      htmlElement.setAttribute('data-theme', 'dark');
+
+      if (themeIcon) {
+        themeIcon.textContent = '☀️';
+      }
+    } else {
+      htmlElement.removeAttribute('data-theme');
+
+      if (themeIcon) {
+        themeIcon.textContent = '🌙';
+      }
+    }
+  };
+
+  let savedTheme = 'light';
+
+  try {
+    savedTheme = localStorage.getItem('theme') || 'light';
+  } catch (error) {
+    console.warn('Could not access saved theme:', error);
   }
 
-  // Toggle theme attribute, swap icon, and save preference
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-      htmlElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-      themeIcon.textContent = '🌙';
-    } else {
-      htmlElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      themeIcon.textContent = '☀️';
-    }
-  });
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme =
+        htmlElement.getAttribute('data-theme') === 'dark'
+          ? 'dark'
+          : 'light';
+
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      applyTheme(newTheme);
+
+      try {
+        localStorage.setItem('theme', newTheme);
+      } catch (error) {
+        console.warn('Could not save theme preference:', error);
+      }
+    });
+  }
 
 
-  // MOBILE HAMBURGER NAVIGATION MENU
+  // MOBILE SLIDE-OUT NAVIGATION
 
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const navClose = document.getElementById('nav-close');
+  const navOverlay = document.getElementById('nav-overlay');
   const navLinks = document.querySelectorAll('.nav__link');
 
-  // Toggle drawer visibility and update accessibility state
-  navToggle.addEventListener('click', () => {
-    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !isExpanded);
-    navMenu.classList.toggle('active');
-  });
+  const openNav = () => {
+    if (!navMenu || !navOverlay) return;
 
-  // Automatically close the mobile menu after selecting a section link
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
+    navMenu.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.classList.add('nav-open');
+
+    if (navToggle) {
+      navToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    navOverlay.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeNav = () => {
+    if (!navMenu || !navOverlay) return;
+
+    navMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('nav-open');
+
+    if (navToggle) {
       navToggle.setAttribute('aria-expanded', 'false');
-    });
+    }
+
+    navOverlay.setAttribute('aria-hidden', 'true');
+  };
+
+  if (navToggle) {
+    navToggle.addEventListener('click', openNav);
+  }
+
+  if (navClose) {
+    navClose.addEventListener('click', closeNav);
+  }
+
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeNav);
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', closeNav);
   });
 
 
-  // PROJECT DETAILS DATA AND MODAL POPUP
+  // PROJECT DETAILS DATA
 
-  // Project metadata mapped by card data-project attribute
   const projectData = {
+
     ecommerce: {
       tag: 'Web App • React',
-      title: 'Modern E-Commerce Platform',
-      desc: 'A feature-rich e-commerce storefront developed with React and Vite. Includes responsive product grids, search filtering, an interactive shopping cart drawer, and clean modular component architecture designed for high maintainability.',
-      tech: ['React', 'Vite', 'JavaScript (ES6+)', 'CSS3 Flexbox/Grid', 'Git'],
+      title: 'Modern E-Commerce Storefront',
+      desc: 'A responsive e-commerce storefront developed using React and JavaScript. It includes product browsing, category filtering, live search, an interactive shopping cart, quantity management, checkout functionality and order history.',
+      tech: [
+        'React',
+        'JavaScript',
+        'Vite',
+        'CSS3',
+        'FakeStoreAPI',
+        'Git'
+      ],
       repo: 'https://github.com/Mkocia500/Datheon_Full_Stack_Web_Development_Internship',
-      demo: 'https://mkociamart.vercel.app' 
+      demo: 'https://mkociamart.vercel.app'
     },
+
     'student-reg': {
-      tag: 'Android & Node.js',
-      title: 'Student Registration & Lab Portal',
-      desc: 'A comprehensive academic management suite featuring a native Java Android application with local Room database caching, background SyncWorker synchronization, PDF report generation, and a Node.js connection-pooling backend.',
-      tech: ['Java (Android)', 'Room Database', 'WorkManager', 'Node.js', 'MySQL', 'REST API'],
+      tag: 'Android • Node.js • MySQL',
+      title: 'Student Registration & Lab Groups Portal',
+      desc: 'An academic registration system designed to help students register for programmes and laboratory groups while allowing lecturers to manage student records and registration requests. The project uses an Android application connected to a Node.js backend and MySQL database.',
+      tech: [
+        'Java',
+        'Android Studio',
+        'Node.js',
+        'Express.js',
+        'MySQL',
+        'REST API'
+      ],
       repo: 'https://github.com/Mkocia500',
       demo: ''
     },
+
     unilife: {
-      tag: 'Cross-Platform • Flutter',
+      tag: 'Cross-Platform • In Development',
       title: 'UniLife Campus Companion',
-      desc: 'A cross-platform mobile application built using Flutter to streamline student onboarding and campus registration workflows. Features responsive state management and seamless multi-screen view transitions.',
-      tech: ['Flutter', 'Dart', 'State Management', 'Mobile UI/UX'],
-      repo: 'https://github.com/Mkocia500',
+      desc: 'A student-life management application planned to bring academic schedules, personal events, budgeting, reminders and study organisation into one platform. The project is planned for Android and iOS using Flutter and Dart, with a Node.js backend and MySQL database.',
+      tech: [
+        'Flutter',
+        'Dart',
+        'Node.js',
+        'MySQL',
+        'UI/UX Design'
+      ],
+      repo: '',
       demo: ''
     },
+
     portfolio: {
-      tag: 'HTML5 • CSS3 • JS',
-      title: 'Developer Portfolio Showcase',
-      desc: 'This exact portfolio website! Built from scratch with semantic HTML5, modern CSS Grid/Flexbox layouts, persistent dark/light theming, mobile hamburger navigation, and interactive project modal dialogs.',
-      tech: ['HTML5', 'Modern CSS3', 'Vanilla JavaScript', 'Local Storage'],
+      tag: 'HTML5 • CSS3 • JavaScript',
+      title: 'Developer Portfolio',
+      desc: 'A personal developer portfolio built to present my background, technical skills and software development projects. It includes responsive layouts, a dark and light theme, mobile navigation and interactive project details.',
+      tech: [
+        'HTML5',
+        'CSS3',
+        'JavaScript',
+        'Local Storage',
+        'EmailJS',
+        'Git'
+      ],
       repo: 'https://github.com/Mkocia500',
       demo: 'https://mkociamart.vercel.app/'
     }
+
   };
+
+
+  // PROJECT DETAILS MODAL
 
   const modalBackdrop = document.getElementById('project-modal');
   const modalClose = document.getElementById('modal-close');
@@ -97,93 +192,183 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTech = document.getElementById('modal-tech');
   const modalRepo = document.getElementById('modal-repo');
   const modalDemo = document.getElementById('modal-demo');
-  const projectCards = document.querySelectorAll('.project-card');
 
-  // Populate modal fields with the clicked project's details and lock background scroll
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
+  const projectCards = document.querySelectorAll('[data-project]');
+
+  const openModal = (data) => {
+    if (
+      !modalBackdrop ||
+      !modalTag ||
+      !modalTitle ||
+      !modalDesc ||
+      !modalTech
+    ) {
+      return;
+    }
+
+    modalTag.textContent = data.tag;
+    modalTitle.textContent = data.title;
+    modalDesc.textContent = data.desc;
+
+    if (modalRepo) {
+      if (data.repo) {
+        modalRepo.href = data.repo;
+        modalRepo.style.display = 'inline-block';
+      } else {
+        modalRepo.style.display = 'none';
+      }
+    }
+
+    if (modalDemo) {
+      if (data.demo) {
+        modalDemo.href = data.demo;
+        modalDemo.style.display = 'inline-block';
+      } else {
+        modalDemo.style.display = 'none';
+      }
+    }
+
+    modalTech.replaceChildren();
+
+    data.tech.forEach((technology) => {
+      const badge = document.createElement('span');
+      badge.textContent = technology;
+      modalTech.appendChild(badge);
+    });
+
+    modalBackdrop.classList.add('active');
+    modalBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    if (modalClose) {
+      modalClose.focus();
+    }
+  };
+
+  const closeModal = () => {
+    if (!modalBackdrop) return;
+
+    modalBackdrop.classList.remove('active');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  };
+
+  projectCards.forEach((card) => {
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('a, button')) return;
+
       const projectId = card.getAttribute('data-project');
       const data = projectData[projectId];
+
       if (!data) return;
 
-      modalTag.textContent = data.tag;
-      modalTitle.textContent = data.title;
-      modalDesc.textContent = data.desc;
-
-      if (modalRepo) {
-        modalRepo.href = data.repo || 'https://github.com/Mkocia500';
-      }
-
-      if (modalDemo) {
-        if (data.demo) {
-          modalDemo.href = data.demo;
-          modalDemo.style.display = 'inline-block';
-        } else {
-          modalDemo.style.display = 'none';
-        }
-      }
-
-      // Render tech stack badges dynamically
-      modalTech.innerHTML = '';
-      data.tech.forEach(t => {
-        const span = document.createElement('span');
-        span.textContent = t;
-        modalTech.appendChild(span);
-      });
-
-      modalBackdrop.classList.add('active');
-      modalBackdrop.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+      openModal(data);
     });
   });
 
-  // Hide modal and restore normal page scrolling
-  const closeModal = () => {
-    modalBackdrop.classList.remove('active');
-    modalBackdrop.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = 'auto';
-  };
+  if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+  }
 
-  modalClose.addEventListener('click', closeModal);
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (event) => {
+      if (event.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+  }
 
-  // Close modal when clicking the dark backdrop outside the dialog box
-  modalBackdrop.addEventListener('click', (e) => {
-    if (e.target === modalBackdrop) closeModal();
-  });
 
-  // Close modal when pressing the Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
+  // GLOBAL KEYBOARD ACCESSIBILITY
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeNav();
       closeModal();
     }
   });
 
 
-  // CONTACT FORM SUBMISSION HANDLER
+  // EMAILJS CONTACT FORM
 
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
 
-  // Simulate async submission feedback and reset form inputs
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formStatus.style.color = 'var(--primary)';
-    formStatus.textContent = 'Sending message...';
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-    setTimeout(() => {
-      formStatus.style.color = '#10b981';
-      formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
-      contactForm.reset();
-    }, 1000);
-  });
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+      );
+
+      if (!window.emailjs) {
+        if (formStatus) {
+          formStatus.style.color = '#ef4444';
+          formStatus.textContent =
+            'The email service could not load. Please refresh the page and try again.';
+        }
+        return;
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+
+      if (formStatus) {
+        formStatus.style.color = 'var(--primary)';
+        formStatus.textContent = 'Sending your message...';
+      }
+
+      try {
+        await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          contactForm,
+          {
+            publicKey: EMAILJS_PUBLIC_KEY
+          }
+        );
+
+        if (formStatus) {
+          formStatus.style.color = '#10b981';
+          formStatus.textContent =
+            'Your message has been sent successfully. Thank you for contacting me!';
+        }
+
+        contactForm.reset();
+
+      } catch (error) {
+        console.error('EmailJS submission error:', error);
+
+        if (formStatus) {
+          formStatus.style.color = '#ef4444';
+          formStatus.textContent =
+            'Sorry, your message could not be sent. Please try again or contact me through LinkedIn.';
+        }
+
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send Message';
+        }
+      }
+    });
+  }
 
 
-  // DYNAMIC COPYRIGHT YEAR IN FOOTER
+  // DYNAMIC COPYRIGHT YEAR
 
   const yearSpan = document.getElementById('year');
+
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
-
 
 });
