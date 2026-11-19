@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // EMAILJS CONFIGURATION
@@ -129,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Git'
       ],
       repo: 'https://github.com/Mkocia500/Datheon_Full_Stack_Web_Development_Internship',
-      demo: 'https://mkociamart.vercel.app'
+      demo: 'https://mkociamart.netlify.app/'
     },
 
     'student-reg': {
@@ -175,8 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'EmailJS',
         'Git'
       ],
-      repo: 'https://github.com/Mkocia500',
-      demo: 'https://mkociamart.vercel.app/'
+      repo: 'https://github.com/Mkocia500/Datheon_Full_Stack_Web_Development_Internship',
+      demo: 'https://mkocia500.github.io/Datheon_Full_Stack_Web_Development_Internship/'
     }
 
   };
